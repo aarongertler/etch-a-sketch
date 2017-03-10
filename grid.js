@@ -1,3 +1,5 @@
+// Credit for the random-color idea goes to (https://lousaint.github.io/etch-a-pad/)
+
 var gridSize = 16;
 var randomColor = false;
 
@@ -29,10 +31,10 @@ function drawGrid(gridSize){
     'width': side + 'px'
   });
   $('#wrapper').children('div').children('div').mouseover(squareChange);   // Need to chain to get the children of the children (squares in the rows)
-  $('#reset').click(reset);
-  $('#randomcolor').click(function(){
+    $('#randomcolor').click(function(){
     randomColor = !randomColor
   });
+  $('#reset').click(reset);
 }
 
 function squareChange(){
@@ -54,8 +56,8 @@ function reset(){
   else {
     $('#wrapper').children().remove(); // just remove everything
     drawGrid(gridSize);
-    $(document).stopImmediatePropagation();
   }
+  $(document).stopImmediatePropagation();  // We were being prompted multiple times without this
 }
 
 function getRandomColor(){
